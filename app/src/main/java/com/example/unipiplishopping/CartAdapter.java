@@ -1,23 +1,31 @@
 package com.example.unipiplishopping;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Button;
 import android.widget.ImageView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 
 public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder> {
-    private Context context;
+    private final Context context;
     private List<Product> cartList;
 
     public CartAdapter(Context context, List<Product> cartList) {
         this.context = context;
         this.cartList = cartList;
+    }
+
+    // Add a method to update the list
+    @SuppressLint("NotifyDataSetChanged")
+    public void updateCartList(List<Product> newCartList) {
+        this.cartList = newCartList;
+        notifyDataSetChanged(); // Notify the adapter for changes
     }
 
     @NonNull
@@ -27,15 +35,17 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
         return new CartViewHolder(view);
     }
 
+    @SuppressLint({"DefaultLocale", "SetTextI18n"})
     @Override
     public void onBindViewHolder(@NonNull CartViewHolder holder, int position) {
         Product product = cartList.get(position);
         holder.textViewTitle.setText(product.getTitle());
+        holder.textViewPrice.setText("€" + String.format("%.2f", product.getPrice()));
         holder.textViewQuantity.setText("Ποσότητα: " + product.getQuantity());
-        holder.textViewPrice.setText("Τιμή: €" + product.getPrice());
 
-        // Προσθήκη εικόνας (Αντιστοιχία με την εικόνα του προϊόντος)
-        int imageResId = context.getResources().getIdentifier("product_image_" + product.getId(), "drawable", context.getPackageName());
+        // Display the product image
+        SharedPreferences sharedPreferences = context.getSharedPreferences("ProductImages", Context.MODE_PRIVATE);
+        int imageResId = sharedPreferences.getInt(product.getId(), R.drawable.mayhem);
         holder.imageViewProduct.setImageResource(imageResId);
     }
 

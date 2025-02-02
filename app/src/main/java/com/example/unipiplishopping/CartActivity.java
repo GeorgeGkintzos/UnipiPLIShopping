@@ -1,21 +1,21 @@
 package com.example.unipiplishopping;
 
+import android.annotation.SuppressLint;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 import java.util.List;
 
 public class CartActivity extends AppCompatActivity {
-
-    private List<Product> cartList;  // Ο κατάλογος των προϊόντων στο καλάθι
+    private List<Product> cartList;
     private TextView textViewTotal;
-    private Button buttonCheckout;
+    private CartAdapter cartAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,29 +24,70 @@ public class CartActivity extends AppCompatActivity {
 
         cartList = new ArrayList<>();
         textViewTotal = findViewById(R.id.textViewTotal);
-        buttonCheckout = findViewById(R.id.buttonCheckout);
+        Button buttonCheckout = findViewById(R.id.buttonCheckout);
 
-        // Προσθήκη προϊόντων στο καλάθι από SharedPreferences (ως παράδειγμα)
-        SharedPreferences sharedPreferences = getSharedPreferences("Cart", MODE_PRIVATE);
-        cartList.add(new Product("1", "Laptop", "Powerful laptop", 999.99, sharedPreferences.getInt("1_quantity", 0)));
-        cartList.add(new Product("2", "Smartphone", "Latest model smartphone", 699.99, sharedPreferences.getInt("2_quantity", 0)));
+        loadCartProducts();
 
-        calculateTotal(); // Υπολογισμός του συνολικού κόστους
+        cartAdapter = new CartAdapter(this, cartList);
+        RecyclerView recyclerViewCart = findViewById(R.id.recyclerViewCart);
+        recyclerViewCart.setLayoutManager(new LinearLayoutManager(this));
+        recyclerViewCart.setAdapter(cartAdapter);
 
-        buttonCheckout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Εδώ μπορείς να προσθέσεις την λογική ολοκλήρωσης της παραγγελίας
-                Toast.makeText(CartActivity.this, "Η παραγγελία ολοκληρώθηκε!", Toast.LENGTH_SHORT).show();
-            }
+        calculateTotal();
+
+        buttonCheckout.setOnClickListener(v -> {
+            clearCart();
+            Toast.makeText(CartActivity.this, "Η παραγγελία ολοκληρώθηκε!", Toast.LENGTH_SHORT).show();
+            finish();
         });
     }
 
+    void loadCartProducts() {
+        SharedPreferences sharedPreferences = getSharedPreferences("Cart", MODE_PRIVATE);
+        SharedPreferences productPrefs = getSharedPreferences("ProductData", MODE_PRIVATE);
+
+        cartList.clear();
+
+        for (String productId : productPrefs.getAll().keySet()) {
+            if (productId.endsWith("_title")) {
+                String id = productId.replace("_title", "");
+                int quantity = sharedPreferences.getInt(id + "_quantity", 0);
+                if (quantity > 0) {
+                    String title = productPrefs.getString(productId, "Άγνωστο");
+                    String description = productPrefs.getString(id + "_description", "");
+                    String date = productPrefs.getString(id + "_date", "");
+                    double price = Double.parseDouble(productPrefs.getString(id + "_price", "0.0"));
+                    cartList.add(new Product(id, title, description, date, price, quantity));
+                }
+            }
+        }
+
+        // Ενημέρωση του adapter με τη νέα λίστα
+        if (cartAdapter != null) {
+            cartAdapter.updateCartList(cartList);
+        }
+    }
+
+    @SuppressLint({"SetTextI18n", "DefaultLocale"})
     private void calculateTotal() {
         double total = 0;
         for (Product product : cartList) {
             total += product.getPrice() * product.getQuantity();
         }
-        textViewTotal.setText("Total: €" + total);
+        textViewTotal.setText("Σύνολο: €" + String.format("%.2f", total));
     }
+
+    private void clearCart() {
+        SharedPreferences sharedPreferences = getSharedPreferences("Cart", MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.clear();
+        editor.apply();
+
+        cartList.clear();
+        if (cartAdapter != null) {
+            cartAdapter.updateCartList(cartList); // Ενημέρωση του adapter
+        }
+        calculateTotal();
+    }
+
 }

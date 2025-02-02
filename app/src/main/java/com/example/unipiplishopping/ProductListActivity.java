@@ -1,63 +1,76 @@
 package com.example.unipiplishopping;
 
 import android.content.Intent;
-import android.os.Bundle;
-import android.view.View;
-import androidx.appcompat.app.AppCompatActivity;
 import android.content.SharedPreferences;
+import android.os.Bundle;
+import android.widget.Button;
+import android.widget.Toast;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 import java.util.List;
-import android.widget.Button;
-
 
 public class ProductListActivity extends AppCompatActivity {
-    private RecyclerView recyclerView;
+    //Accessed only within the class itself
     private ProductAdapter productAdapter;
     private List<Product> productList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_product_list);
+        setContentView(R.layout.activity_product_list); //Defines the layout of the activity
 
-        // Αρχικοποίηση RecyclerView
-        recyclerView = findViewById(R.id.recyclerViewProducts);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        RecyclerView recyclerView = findViewById(R.id.recyclerViewProducts);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this)); //Arranges items in a linear list (vertically or horizontally)
 
-        loadProducts(); // Δημιουργία λίστας προϊόντων
+        loadProducts();
 
-        // Δημιουργία και ορισμός adapter
-        productAdapter = new ProductAdapter(this, productList);
-        recyclerView.setAdapter(productAdapter);
+        if (productList != null && !productList.isEmpty()) {
+            productAdapter = new ProductAdapter(this, productList);
+            recyclerView.setAdapter(productAdapter); //RecyclerView, you need to connect it to an Adapter and a LayoutManager
+        }
 
-        // Αρχικοποίηση κουμπιού για το καλάθι
         Button buttonGoToCart = findViewById(R.id.buttonGoToCart);
-        buttonGoToCart.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Άνοιγμα του CartActivity
-                Intent intent = new Intent(ProductListActivity.this, CartActivity.class);
-                startActivity(intent);
+        buttonGoToCart.setOnClickListener(v -> {
+            if (productAdapter != null) {
+                startActivity(new Intent(ProductListActivity.this, CartActivity.class));
+            } else {
+                Toast.makeText(ProductListActivity.this, "Δεν υπάρχουν διαθέσιμα προϊόντα.", Toast.LENGTH_SHORT).show();
             }
         });
     }
 
     private void loadProducts() {
         productList = new ArrayList<>();
+        productList.add(new Product("1", "Lady Gaga\nMayhem", "Dark Pop", "7 March 2025", 43.00, 1));
+        productList.add(new Product("2", "The Beatles\nAbbey Road", "Rock", "26 September 1969",35.00, 1));
+        productList.add(new Product("3", "The Beatles\nLet It Be", "Rock", "8 May 1970", 35.00, 1));
+        productList.add(new Product("4", "Panic! At The Disco\nDeath of a Bachelor", "Alternative Indie", "15 January 2016", 20.00, 1));
+        productList.add(new Product("5", "Mac Miller\nBalloonerism", "Hip-Hop, Rap", "17 January 2025", 40.00, 1));
+        productList.add(new Product("6", "Μάνος Χατζιδάκις\nΟ Μεγάλος Ερωτικός", "Folk, Classical, Entekhno", "March 1972", 45.00, 1));
+        productList.add(new Product("7", "Τάνια Τσανακλίδου\nΜαμά Γερνάω", "Folk, Entekhno", "October 1981", 15.00, 1));
+        productList.add(new Product("8", "Queen\nA Night at the Opera", "Rock, Pop", "21 November 1975", 38.00, 1));
 
-        // Προσθήκη προϊόντων (hardcoded προς το παρόν)
-        productList.add(new Product("1", "Laptop", "Powerful laptop", 999.99, 1));
-        productList.add(new Product("2", "Smartphone", "Latest model smartphone", 699.99, 1));
-        productList.add(new Product("3", "Headphones", "Noise cancelling headphones", 199.99, 1));
-
-        // Αποθήκευση εικόνων στο SharedPreferences
-        SharedPreferences sharedPreferences = getSharedPreferences("ProductImages", MODE_PRIVATE);
+        SharedPreferences sharedPreferences = getSharedPreferences("ProductData", MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putInt("1", R.drawable.laptop);
-        editor.putInt("2", R.drawable.smartphone);
-        editor.putInt("3", R.drawable.headphones);
+        for (Product product : productList) {
+            editor.putString(product.getId() + "_title", product.getTitle());
+            editor.putString(product.getId() + "_description", product.getDescription());
+            editor.putString(product.getId() + "_price", String.valueOf(product.getPrice()));
+        }
         editor.apply();
+
+        SharedPreferences imagePrefs = getSharedPreferences("ProductImages", MODE_PRIVATE);
+        SharedPreferences.Editor imageEditor = imagePrefs.edit();
+        imageEditor.putInt("1", R.drawable.mayhem);
+        imageEditor.putInt("2", R.drawable.abbey);
+        imageEditor.putInt("3", R.drawable.let);
+        imageEditor.putInt("4", R.drawable.death);
+        imageEditor.putInt("5", R.drawable.ball);
+        imageEditor.putInt("6", R.drawable.megalos);
+        imageEditor.putInt("7", R.drawable.mama);
+        imageEditor.putInt("8", R.drawable.queen);
+        imageEditor.apply();
     }
 }

@@ -1,5 +1,6 @@
 package com.example.unipiplishopping;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.view.LayoutInflater;
@@ -8,19 +9,23 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
 import java.util.List;
 
 public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductViewHolder> {
-    private Context context;
-    private List<Product> productList;
+    private final Context context;
+    private final List<Product> productList;
 
+    // Automatically called, when a new object of the class is created.
     public ProductAdapter(Context context, List<Product> productList) {
-        this.context = context;
-        this.productList = productList;
+        this.context = context; //To load a layout
+        this.productList = productList; //Data to be displayed in RecyclerView
     }
 
+    // Called by RecyclerView when it needs to create a new ViewHolder
     @NonNull
     @Override
     public ProductViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -28,6 +33,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
         return new ProductViewHolder(view);
     }
 
+    @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(@NonNull ProductViewHolder holder, int position) {
         Product product = productList.get(position);
@@ -35,37 +41,38 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
         holder.textViewPrice.setText("€" + product.getPrice());
         holder.textViewDescription.setText(product.getDescription());
 
-        // Φόρτωση εικόνας από SharedPreferences
         SharedPreferences sharedPreferences = context.getSharedPreferences("ProductImages", Context.MODE_PRIVATE);
-        int imageResId = sharedPreferences.getInt(product.getId(), R.drawable.laptop);
+        int imageResId = sharedPreferences.getInt(product.getId(), R.drawable.mayhem);
         holder.imageViewProduct.setImageResource(imageResId);
 
-        // Φόρτωση ποσότητας από SharedPreferences
-        SharedPreferences quantityPrefs = context.getSharedPreferences("ProductQuantities", Context.MODE_PRIVATE);
-        final int[] quantity = {quantityPrefs.getInt(product.getId(), 0)};  // Αρχική ποσότητα 0
+        SharedPreferences quantityPrefs = context.getSharedPreferences("Cart", Context.MODE_PRIVATE);
+        final int[] quantity = {quantityPrefs.getInt(product.getId() + "_quantity", 0)};
         holder.textViewQuantity.setText(String.valueOf(quantity[0]));
 
-        // Ρυθμίσεις για τα κουμπιά + και -
-        holder.buttonIncrease.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                quantity[0]++;  // Αυξάνει την ποσότητα
-                holder.textViewQuantity.setText(String.valueOf(quantity[0]));  // Ενημερώνει την ποσότητα στο UI
-                SharedPreferences.Editor editor = quantityPrefs.edit();
-                editor.putInt(product.getId(), quantity[0]);  // Αποθήκευση νέας ποσότητας στο SharedPreferences
-                editor.apply();
+        holder.buttonIncrease.setOnClickListener(v -> {
+            quantity[0]++;
+            holder.textViewQuantity.setText(String.valueOf(quantity[0]));
+            SharedPreferences.Editor editor = quantityPrefs.edit();
+            editor.putInt(product.getId() + "_quantity", quantity[0]);
+            editor.apply();
+
+            // Update CartActivity (if open)
+            if (context instanceof CartActivity) {
+                ((CartActivity) context).loadCartProducts();
             }
         });
 
-        holder.buttonDecrease.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (quantity[0] > 0) {  // Μειώνει την ποσότητα μόνο αν είναι μεγαλύτερη από 0
-                    quantity[0]--;
-                    holder.textViewQuantity.setText(String.valueOf(quantity[0]));
-                    SharedPreferences.Editor editor = quantityPrefs.edit();
-                    editor.putInt(product.getId(), quantity[0]);  // Αποθήκευση νέας ποσότητας στο SharedPreferences
-                    editor.apply();
+        holder.buttonDecrease.setOnClickListener(v -> {
+            if (quantity[0] > 0) {
+                quantity[0]--;
+                holder.textViewQuantity.setText(String.valueOf(quantity[0]));
+                SharedPreferences.Editor editor = quantityPrefs.edit();
+                editor.putInt(product.getId() + "_quantity", quantity[0]);
+                editor.apply();
+
+                // Update CartActivity (if open)
+                if (context instanceof CartActivity) {
+                    ((CartActivity) context).loadCartProducts();
                 }
             }
         });
@@ -81,6 +88,8 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
         TextView textViewTitle, textViewPrice, textViewDescription, textViewQuantity;
         Button buttonIncrease, buttonDecrease;
 
+        // ProductViewHolder is responsible for managing and storing the UI elements associated with
+        // each product in the RecyclerView list.
         public ProductViewHolder(@NonNull View itemView) {
             super(itemView);
             imageViewProduct = itemView.findViewById(R.id.imageViewProduct);

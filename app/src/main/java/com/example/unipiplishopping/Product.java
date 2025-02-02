@@ -4,13 +4,15 @@ public class Product {
     private String id;
     private String title;
     private String description;
+    private String date;
     private double price;
     private int quantity;
 
-    public Product(String id, String title, String description, double price, int quantity) {
+    public Product(String id, String title, String description, String date, double price, int quantity) {
         this.id = id;
         this.title = title;
         this.description = description;
+        this.date = description;
         this.price = price;
         this.quantity = quantity;
     }
@@ -32,6 +34,9 @@ public class Product {
         return description;
     }
 
+    public String getDate() {
+        return date;
+    }
 
     public double getPrice() {
         return price;
