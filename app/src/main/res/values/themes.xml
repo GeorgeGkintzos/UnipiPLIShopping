@@ -6,4 +6,10 @@
     </style>
 
     <style name="Theme.UnipiPLIShopping" parent="Base.Theme.UnipiPLIShopping" />
+
+    <style name="SpinnerStyle" parent="Theme.MaterialComponents.Light">
+        <item name="android:textColorPrimary">#FFFFFF</item>
+        <item name="android:textColorHint">#FFFFFF</item>
+    </style>
+
 </resources>

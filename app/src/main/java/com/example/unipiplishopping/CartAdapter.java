@@ -40,8 +40,8 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
     public void onBindViewHolder(@NonNull CartViewHolder holder, int position) {
         Product product = cartList.get(position);
         holder.textViewTitle.setText(product.getTitle());
-        holder.textViewPrice.setText("€" + String.format("%.2f", product.getPrice()));
-        holder.textViewQuantity.setText("Ποσότητα: " + product.getQuantity());
+        holder.textViewPrice.setText(String.format("%.2f", product.getPrice()) + "€");
+        holder.textViewQuantity.setText(context.getString(R.string.quantity) + " " + product.getQuantity());
 
         // Display the product image
         SharedPreferences sharedPreferences = context.getSharedPreferences("ProductImages", Context.MODE_PRIVATE);

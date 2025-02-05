@@ -1,42 +1,50 @@
-<LinearLayout android:layout_width="match_parent"
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
-    android:padding="8dp"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+    android:padding="12dp"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#122021"
+    android:layout_gravity="center">
 
     <ImageView
         android:id="@+id/imageViewProduct"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:scaleType="centerCrop" />
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:scaleType="centerCrop"
+        android:contentDescription="Product Image" />
 
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:orientation="vertical"
-        android:padding="8dp">
+        android:padding="12dp">
 
         <TextView
             android:id="@+id/textViewTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Product Name"
+            android:text="@string/product_name"
             android:textSize="18sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:textColor="#D3D3D3" />
 
         <TextView
             android:id="@+id/textViewQuantity"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Ποσότητα: 0"
-            android:textSize="16sp" />
+            android:text="@string/quantity"
+            android:textSize="16sp"
+            android:textColor="#FFFFFF" />
 
         <TextView
             android:id="@+id/textViewPrice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Τιμή: €0.00"
-            android:textSize="16sp" />
+            android:text="@string/price"
+            android:textSize="16sp"
+            android:textColor="#e74c3c" />
     </LinearLayout>
 </LinearLayout>

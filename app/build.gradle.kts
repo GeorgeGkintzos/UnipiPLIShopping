@@ -46,6 +46,8 @@ dependencies {
     implementation(libs.appcompat.v141)
     implementation(libs.legacy.support.v4)
     implementation(libs.firebase.database)
+    implementation(libs.play.services.location)
+    implementation (libs.fab)
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)

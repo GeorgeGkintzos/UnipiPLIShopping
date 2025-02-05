@@ -2,19 +2,21 @@ package com.example.unipiplishopping;
 
 public class Product {
     private String id;
-    private String title;
-    private String description;
-    private String date;
-    private double price;
-    private int quantity;
+    private final String title;
+    private final String description;
+    private final String date;
+    private final double price;
+    private final int quantity;
+    private final String storeLocation; // Νέο πεδίο για το κατάστημα
 
-    public Product(String id, String title, String description, String date, double price, int quantity) {
+    public Product(String id, String title, String description, String date, double price, int quantity, String storeLocation) {
         this.id = id;
         this.title = title;
         this.description = description;
-        this.date = description;
+        this.date = date;
         this.price = price;
         this.quantity = quantity;
+        this.storeLocation = storeLocation;
     }
 
     // Getter και Setter για τα χαρακτηριστικά
@@ -44,6 +46,10 @@ public class Product {
 
     public int getQuantity() {
         return quantity;
+    }
+
+    public String getStoreLocation() {
+        return storeLocation;
     }
 
 }

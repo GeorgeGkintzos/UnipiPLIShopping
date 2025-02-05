@@ -1,39 +1,100 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="16dp"
-    android:background="#f5f5f5"
-    android:gravity="center"> <!-- Centers the content -->
+    android:background="#122021">
 
-    <!-- Title Section -->
-    <TextView
-        android:id="@+id/textViewTitle"
+    <!-- Κύριο FloatingActionButton για τα Settings -->
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabSettings"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Product List"
-        android:textSize="24sp"
-        android:textColor="#333"
-        android:fontFamily="sans-serif-medium"
-        android:textStyle="bold"
-        android:padding="16dp"
-        android:gravity="center"/>
+        android:contentDescription="Settings"
+        android:src="@drawable/ic_settings"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="16dp"
+        app:backgroundTint="#556B2F"
+        app:elevation="6dp"
+        app:tint="@android:color/white"
+        app:maxImageSize="35dp"/>
 
-    <!-- RecyclerView for displaying products -->
+    <!-- Επιπλέον FloatingActionButton για την επιλογή 1 -->
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabOption1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="Profile"
+        android:src="@drawable/profile"
+        android:layout_gravity="bottom|end"
+        android:layout_marginBottom="96dp"
+        android:layout_marginEnd="16dp"
+        app:backgroundTint="#556B2F"
+        app:elevation="6dp"
+        app:maxImageSize="40dp"
+        app:tint="@android:color/white"
+        android:visibility="gone"/>
+
+    <!-- Επιπλέον FloatingActionButton για την επιλογή 2 -->
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabOption2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="Access"
+        android:src="@drawable/access"
+        android:layout_gravity="bottom|end"
+        android:layout_marginBottom="160dp"
+        android:layout_marginEnd="16dp"
+        app:backgroundTint="#556B2F"
+        app:elevation="6dp"
+        app:maxImageSize="32dp"
+        app:tint="@android:color/white"
+        android:visibility="gone"/>
+
+    <!-- Title Section -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp"
+        android:gravity="center">
+
+        <TextView
+            android:id="@+id/textViewTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/vinyls"
+            android:textSize="24sp"
+            android:textColor="#FFFFFF"
+            android:fontFamily="sans-serif-medium"
+            android:textStyle="bold"
+            android:padding="16dp"
+            android:gravity="center"/>
+    </LinearLayout>
+
+    <!-- RecyclerView για τη λίστα των προϊόντων -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewProducts"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:paddingTop="8dp"
+        android:layout_height="match_parent"
+        android:layout_marginTop="72dp"
         android:clipToPadding="false"
-        android:scrollbars="vertical" />
+        android:paddingTop="8dp"
+        android:scrollbars="vertical"
+        android:gravity="center"/>
 
-    <Button
+    <!-- FloatingActionButton για το καλάθι -->
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/buttonGoToCart"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Go to Cart" />
+        android:src="@drawable/cart"
+        android:contentDescription="@string/go_to_cart"
+        android:layout_gravity="bottom|start"
+        android:layout_margin="16dp"
+        app:backgroundTint="#556B2F"
+        app:elevation="6dp"
+        app:maxImageSize="35dp"
+        app:tint="@android:color/white"/>
 
-</LinearLayout>
+</FrameLayout>

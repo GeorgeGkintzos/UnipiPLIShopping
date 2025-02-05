@@ -1,31 +1,117 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="16dp">
+    android:background="#122021">
 
-    <!-- Λίστα προϊόντων -->
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerViewCart"
+    <!-- Κύριο LinearLayout για τα υπόλοιπα στοιχεία -->
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1" />
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="16dp">
 
-    <!-- Σύνολο τιμής -->
-    <TextView
-        android:id="@+id/textViewTotal"
-        android:layout_width="match_parent"
+        <!-- Title Section -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="8dp"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/textViewTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/your_cart"
+                android:textSize="24sp"
+                android:textColor="#FFFFFF"
+                android:fontFamily="sans-serif-medium"
+                android:textStyle="bold"
+                android:padding="8dp"
+                android:gravity="center"/>
+        </LinearLayout>
+
+        <!-- Λίστα προϊόντων -->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerViewCart"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:paddingTop="8dp"
+            android:scrollbars="vertical"/>
+
+        <!-- Σύνολο τιμής -->
+        <TextView
+            android:id="@+id/textViewTotal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/Total"
+            android:textSize="18sp"
+            android:textAlignment="center"
+            android:textColor="#D3D3D3"
+            android:layout_marginTop="16dp" />
+
+        <Button
+            android:id="@+id/buttonCheckout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxWidth="400dp"
+            android:layout_gravity="center_horizontal"
+            android:text="@string/Complete_Order"
+            android:textColor="#FFFFFF"
+            android:backgroundTint="#556B2F"
+            android:layout_marginTop="20dp"
+            android:padding="14dp"
+            android:minHeight="56dp" />
+    </LinearLayout>
+
+    <!-- Κύριο FloatingActionButton για τα Settings -->
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabSettings"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Σύνολο: €0.00"
-        android:textSize="18sp"
-        android:textAlignment="center"
-        android:layout_marginTop="16dp" />
+        android:contentDescription="TODO"
+        android:src="@drawable/ic_settings"
+        android:layout_gravity="bottom|end"
+        android:layout_marginBottom="130dp"
+        android:layout_marginEnd="16dp"
+        app:backgroundTint="#556B2F"
+        app:elevation="6dp"
+        app:maxImageSize="28dp"
+        app:tint="@android:color/white"/>
 
-    <Button
-        android:id="@+id/buttonCheckout"
-        android:layout_width="match_parent"
+    <!-- Επιπλέον FloatingActionButton για την επιλογή 1 -->
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabOption1"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Ολοκλήρωση Παραγγελίας"
-        android:layout_marginTop="20dp" />
-</LinearLayout>
+        android:contentDescription="TODO"
+        android:src="@drawable/profile"
+        android:layout_gravity="bottom|end"
+        android:layout_marginBottom="216dp"
+        android:layout_marginEnd="16dp"
+        app:backgroundTint="#556B2F"
+        app:elevation="6dp"
+        app:maxImageSize="40dp"
+        app:tint="@android:color/white"
+        android:visibility="gone"/>
+
+    <!-- Επιπλέον FloatingActionButton για την επιλογή 2 -->
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabOption2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="TODO"
+        android:src="@drawable/access"
+        android:layout_gravity="bottom|end"
+        android:layout_marginBottom="280dp"
+        android:layout_marginEnd="16dp"
+        app:backgroundTint="#556B2F"
+        app:elevation="6dp"
+        app:maxImageSize="32dp"
+        app:tint="@android:color/white"
+        android:visibility="gone"/>
+
+</FrameLayout>

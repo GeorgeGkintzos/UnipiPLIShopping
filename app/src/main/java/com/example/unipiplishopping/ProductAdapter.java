@@ -36,10 +36,25 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
     @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(@NonNull ProductViewHolder holder, int position) {
+        // Ανάκτηση του αποθηκευμένου font size από τα SharedPreferences
+        SharedPreferences fontPrefs = context.getSharedPreferences("UserPreferences", Context.MODE_PRIVATE);
+        float fontSize = fontPrefs.getFloat("font_size", 16);
+
+        // Εφαρμογή του font size στα TextView του item
+        holder.textViewTitle.setTextSize(fontSize);
+        holder.textViewPrice.setTextSize(fontSize);
+        holder.textViewDescription.setTextSize(fontSize);
+        holder.textViewQuantity.setTextSize(fontSize);
+        holder.textViewReleaseDate.setTextSize(fontSize);
+        holder.textViewStoreLocation.setTextSize(fontSize);
+
+        // Συνέχεια με τις υπόλοιπες ενέργειες
         Product product = productList.get(position);
         holder.textViewTitle.setText(product.getTitle());
-        holder.textViewPrice.setText("€" + product.getPrice());
+        holder.textViewPrice.setText(product.getPrice() + "€");
         holder.textViewDescription.setText(product.getDescription());
+        holder.textViewReleaseDate.setText(context.getString(R.string.release_date_label) + "\n" + product.getDate());
+        holder.textViewStoreLocation.setText(context.getString(R.string.store_label) + "\n" + product.getStoreLocation());
 
         SharedPreferences sharedPreferences = context.getSharedPreferences("ProductImages", Context.MODE_PRIVATE);
         int imageResId = sharedPreferences.getInt(product.getId(), R.drawable.mayhem);
@@ -78,6 +93,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
         });
     }
 
+
     @Override
     public int getItemCount() {
         return productList.size();
@@ -86,10 +102,9 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
     public static class ProductViewHolder extends RecyclerView.ViewHolder {
         ImageView imageViewProduct;
         TextView textViewTitle, textViewPrice, textViewDescription, textViewQuantity;
+        TextView textViewReleaseDate, textViewStoreLocation; // Νέα πεδία
         Button buttonIncrease, buttonDecrease;
 
-        // ProductViewHolder is responsible for managing and storing the UI elements associated with
-        // each product in the RecyclerView list.
         public ProductViewHolder(@NonNull View itemView) {
             super(itemView);
             imageViewProduct = itemView.findViewById(R.id.imageViewProduct);
@@ -97,8 +112,11 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
             textViewPrice = itemView.findViewById(R.id.textViewPrice);
             textViewDescription = itemView.findViewById(R.id.textViewDescription);
             textViewQuantity = itemView.findViewById(R.id.textViewQuantity);
+            textViewReleaseDate = itemView.findViewById(R.id.textViewReleaseDate);
+            textViewStoreLocation = itemView.findViewById(R.id.textViewStoreLocation);
             buttonIncrease = itemView.findViewById(R.id.buttonIncrease);
             buttonDecrease = itemView.findViewById(R.id.buttonDecrease);
         }
     }
+
 }

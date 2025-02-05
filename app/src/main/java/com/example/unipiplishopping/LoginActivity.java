@@ -1,58 +1,52 @@
 package com.example.unipiplishopping;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.Toast;
-
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-public class LoginActivity extends AppCompatActivity {
+public class LoginActivity extends BaseActivity {
     private EditText editTextUsername, editTextPassword;
-    private ImageView back_image;
-    private Button buttonLogin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        applyFontSize();
+
         editTextUsername = findViewById(R.id.editTextUsername);
         editTextPassword = findViewById(R.id.editTextPassword);
-        buttonLogin = findViewById(R.id.buttonLogin);
-        back_image = findViewById(R.id.Back_image);
+        Button buttonLogin = findViewById(R.id.buttonLogin);
+        Button back = findViewById(R.id.back);
 
-        buttonLogin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-               checkLogin();
-            }
-        });
+        buttonLogin.setOnClickListener(v -> checkLogin());
 
-
-
-        back_image.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                backToHome(v);
-                finish(); // Κλείνει το τρέχον activity
-            }
+        back.setOnClickListener(v -> {
+            backToHome();
+            finish(); // Κλείνει το τρέχον activity
         });
     }
 
-    private void backToHome(View view) {
-        Intent intent=new Intent(LoginActivity.this,MainActivity.class);
+    private void backToHome() {
+        Intent intent=new Intent(LoginActivity.this,SignupActivity.class);
         startActivity(intent);
+    }
+
+    private void saveUserToPreferences() {
+        String username = editTextUsername.getText().toString().trim();
+        SharedPreferences sharedPreferences = getSharedPreferences("UserSession", MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString("username", username);
+        editor.apply();
     }
 
     private void checkLogin() {
@@ -60,7 +54,7 @@ public class LoginActivity extends AppCompatActivity {
         String password = editTextPassword.getText().toString().trim();
 
         if (username.isEmpty() || password.isEmpty()) {
-            Toast.makeText(getApplicationContext(), "Please fill in all fields", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), getString(R.string.fill_all_fields), Toast.LENGTH_SHORT).show();
             return;
         }
 
@@ -84,12 +78,14 @@ public class LoginActivity extends AppCompatActivity {
                 }
 
                 if (isValid) {
-                    Toast.makeText(getApplicationContext(), "Login Successful", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), getString(R.string.login_success), Toast.LENGTH_SHORT).show();
+                    saveUserToPreferences();
                     Intent intent = new Intent(LoginActivity.this, ProductListActivity.class);
                     startActivity(intent);
                 } else {
-                    Toast.makeText(getApplicationContext(), "Invalid Credentials", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), getString(R.string.invalid_credentials), Toast.LENGTH_SHORT).show();
                 }
+
             }
 
             @Override

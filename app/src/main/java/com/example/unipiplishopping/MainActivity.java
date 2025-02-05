@@ -2,36 +2,32 @@ package com.example.unipiplishopping;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // Άνοιγμα LoginActivity όταν πατηθεί το κουμπί Login
+        // Εφαρμογή του αποθηκευμένου μεγέθους γραμματοσειράς στα στοιχεία της δραστηριότητας
+        applyFontSize();
+
+        // Εύρεση του κουμπιού "Login" και ρύθμιση συμβάντος κλικ
         Button btnLogin = findViewById(R.id.btnLogin);
-        btnLogin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, LoginActivity.class);
-                startActivity(intent);
-            }
+        btnLogin.setOnClickListener(v -> {
+            // Μετάβαση στη δραστηριότητα LoginActivity όταν πατηθεί το κουμπί
+            Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+            startActivity(intent);
         });
 
-        // Άνοιγμα SignupActivity όταν πατηθεί το κουμπί Signup
+        // Εύρεση του κουμπιού "Signup" και ρύθμιση συμβάντος κλικ
         Button btnSignup = findViewById(R.id.btnSignup);
-        btnSignup.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, SignupActivity.class);
-                startActivity(intent);
-            }
+        btnSignup.setOnClickListener(v -> {
+            // Μετάβαση στη δραστηριότητα SignupActivity όταν πατηθεί το κουμπί
+            Intent intent = new Intent(MainActivity.this, SignupActivity.class);
+            startActivity(intent);
         });
     }
 }

@@ -1,0 +1,147 @@
+<resources>
+    <string name="app_name">UnipiPLIShopping</string>
+    <string name="_0">Texto</string>
+    <string name="first_fragment_label">Primer Fragmento</string>
+    <string name="second_fragment_label">Segundo Fragmento</string>
+    <string name="action_settings">Configuración</string>
+    <string name="next">Siguiente</string>
+    <string name="previous">Anterior</string>
+    <string name="settings">Configuración</string>
+    <string name="profile">Configuración</string>
+    <string name="vinyls">Vinilos</string>
+    <string name="go_to_cart">Ir al Carrito</string>
+    <string name="your_cart">Tu Carrito</string>
+    <string name="Total">Total: €0.00</string>
+    <string name="Complete_Order">Completar Pedido</string>
+    <string name="first_name">Nombre</string>
+    <string name="last_name">Apellido</string>
+    <string name="save">Guardar</string>
+    <string name="username">Nombre de Usuario</string>
+    <string name="password">Contraseña</string>
+    <string name="login">Iniciar Sesión</string>
+    <string name="main_login">Iniciar Sesión</string>
+    <string name="main_signup">Registrarse</string>
+    <string name="title_settings">Configuración</string>
+    <string name="font_size">Tamaño de Fuente</string>
+    <string name="apply">OK</string>
+    <string name="signup_username">Nombre de Usuario</string>
+    <string name="signup_first_name">Nombre</string>
+    <string name="signup_last_name">Apellido</string>
+    <string name="signup_email">Correo Electrónico</string>
+    <string name="signup_password">Contraseña</string>
+    <string name="signup_confirm_password">Confirmar Contraseña</string>
+    <string name="register">Registrarse</string>
+    <string name="product_name">Nombre del Producto</string>
+    <string name="quantity">Cantidad:</string>
+    <string name="price">Precio:</string>
+
+    <string name="lady_gaga_mayhem">Lady Gaga\nMayhem</string>
+    <string name="the_beatles_abbey_road">The Beatles\nAbbey Road</string>
+    <string name="the_beatles_let_it_be">The Beatles\nLet It Be</string>
+    <string name="panic_death_of_a_bachelor">Panic! At The Disco\nDeath of a Bachelor</string>
+    <string name="mac_miller_balloonerism">Mac Miller\nBalloonerism</string>
+    <string name="manos_chatzidakis_megalos_erotikos">Manos Hadjidakis\nEl Gran Erótico</string>
+    <string name="tania_tsanaklidou_mama_gernao">Tania Tsanaklidou\nMamá Envejezco</string>
+    <string name="queen_a_night_at_the_opera">Queen\nA Night at the Opera</string>
+
+    <string name="dark_pop">Dark Pop</string>
+    <string name="rock">Rock</string>
+    <string name="alternative_indie">Alternativo Indie</string>
+    <string name="hip_hop_rap">Hip-Hop, Rap</string>
+    <string name="folk_classical_entekhno">Folk, Clásico, Entechno</string>
+    <string name="date_7_march_2025">7 de marzo de 2025</string>
+    <string name="date_26_september_1969">26 de septiembre de 1969</string>
+    <string name="date_8_may_1970">8 de mayo de 1970</string>
+    <string name="date_15_january_2016">15 de enero de 2016</string>
+    <string name="date_17_january_2025">17 de enero de 2025</string>
+    <string name="date_march_1972">Marzo de 1972</string>
+    <string name="date_october_1981">Octubre de 1981</string>
+    <string name="date_21_november_1975">21 de noviembre de 1975</string>
+
+    <string name="velona_records">Velona Records</string>
+    <string name="diskorama">DISKORAMA</string>
+    <string name="underground_tales_records">Underground Tales Records</string>
+    <string name="joe_records">Joe Records</string>
+    <string name="vinyl_city">Vinyl City</string>
+
+    <string name="nearby_store_title">¡Tienda cercana!</string>
+    <string name="nearby_store_text">Estás a %1$d metros de %2$s</string>
+
+    <string name="release_date_label">Fecha de Lanzamiento:</string>
+    <string name="store_label">Tienda:</string>
+
+    <string name="restart_required">Reinicio requerido</string>
+    <string name="restart_message">Para aplicar los cambios, la aplicación debe reiniciarse. ¿Quieres continuar?</string>
+    <string name="yes">Sí</string>
+    <string name="no">No</string>
+
+    <string name="login_signup">Inscribirse</string>
+
+    <string name="order_completed">¡El pedido se ha completado!</string>
+    <string name="order_line_success">¡Las líneas del pedido se registraron con éxito!</string>
+    <string name="order_line_failure">Error al registrar las líneas del pedido.</string>
+    <string name="order_success">¡El pedido se registró con éxito!</string>
+    <string name="order_failure">Error al registrar el pedido.</string>
+    <string name="total_price">Total</string>
+
+    <string name="user_added_success">¡Usuario agregado con éxito!</string>
+    <string name="error_adding_user">¡Error durante la inserción!</string>
+
+    <string name="error_checking_username">Error al verificar el nombre de usuario</string>
+
+    <string name="fill_all_fields">¡Por favor, rellena todos los campos!</string>
+    <string name="passwords_must_match">¡Las contraseñas deben ser idénticas!</string>
+    <string name="invalid_email">¡Formato de correo electrónico no válido!</string>
+    <string name="username_exists">¡El nombre de usuario ya existe! ¡Elige otro!</string>
+
+    <string name="login_success">Inicio de sesión exitoso</string>
+    <string name="invalid_credentials">Credenciales inválidas</string>
+
+    <string name="location_permission_required">¡Se requiere permiso de ubicación!</string>
+    <string name="edit_your_profile">Edita tu perfil</string>
+    <string name="login_title">Acceso</string>
+
+    <string name="create_account">Creación de cuenta</string>
+
+    <string name="select_language">Selección de idioma</string>
+
+    <string name="back">Atrás</string>
+
+    <string name="lorem_ipsum">
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam in scelerisque sem. Mauris
+    volutpat, dolor id interdum ullamcorper, risus dolor egestas lectus, sit amet mattis purus
+    dui nec risus. Maecenas non sodales nisi, vel dictum dolor. Class aptent taciti sociosqu ad
+    litora torquent per conubia nostra, per inceptos himenaeos. Suspendisse blandit eleifend
+    diam, vel rutrum tellus vulputate quis. Aliquam eget libero aliquet, imperdiet nisl a,
+    ornare ex. Sed rhoncus est ut libero porta lobortis. Fusce in dictum tellus.\n\n
+    Suspendisse interdum ornare ante. Aliquam nec cursus lorem. Morbi id magna felis. Vivamus
+    egestas, est a condimentum egestas, turpis nisl iaculis ipsum, in dictum tellus dolor sed
+    neque. Morbi tellus erat, dapibus ut sem a, iaculis tincidunt dui. Interdum et malesuada
+    fames ac ante ipsum primis in faucibus. Curabitur et eros porttitor, ultricies urna vitae,
+    molestie nibh. Phasellus at commodo eros, non aliquet metus. Sed maximus nisl nec dolor
+    bibendum, vel congue leo egestas.\n\n
+    Sed interdum tortor nibh, in sagittis risus mollis quis. Curabitur mi odio, condimentum sit
+    amet auctor at, mollis non turpis. Nullam pretium libero vestibulum, finibus orci vel,
+    molestie quam. Fusce blandit tincidunt nulla, quis sollicitudin libero facilisis et. Integer
+    interdum nunc ligula, et fermentum metus hendrerit id. Vestibulum lectus felis, dictum at
+    lacinia sit amet, tristique id quam. Cras eu consequat dui. Suspendisse sodales nunc ligula,
+    in lobortis sem porta sed. Integer id ultrices magna, in luctus elit. Sed a pellentesque
+    est.\n\n
+    Aenean nunc velit, lacinia sed dolor sed, ultrices viverra nulla. Etiam a venenatis nibh.
+    Morbi laoreet, tortor sed facilisis varius, nibh orci rhoncus nulla, id elementum leo dui
+    non lorem. Nam mollis ipsum quis auctor varius. Quisque elementum eu libero sed commodo. In
+    eros nisl, imperdiet vel imperdiet et, scelerisque a mauris. Pellentesque varius ex nunc,
+    quis imperdiet eros placerat ac. Duis finibus orci et est auctor tincidunt. Sed non viverra
+    ipsum. Nunc quis augue egestas, cursus lorem at, molestie sem. Morbi a consectetur ipsum, a
+    placerat diam. Etiam vulputate dignissim convallis. Integer faucibus mauris sit amet finibus
+    convallis.\n\n
+    Phasellus in aliquet mi. Pellentesque habitant morbi tristique senectus et netus et
+    malesuada fames ac turpis egestas. In volutpat arcu ut felis sagittis, in finibus massa
+    gravida. Pellentesque id tellus orci. Integer dictum, lorem sed efficitur ullamcorper,
+    libero justo consectetur ipsum, in mollis nisl ex sed nisl. Donec maximus ullamcorper
+    sodales. Praesent bibendum rhoncus tellus nec feugiat. In a ornare nulla. Donec rhoncus
+    libero vel nunc consequat, quis tincidunt nisl eleifend. Cras bibendum enim a justo luctus
+    vestibulum. Fusce dictum libero quis erat maximus, vitae volutpat diam dignissim.
+</string>
+
+</resources>
