@@ -106,7 +106,7 @@
 
     <string name="select_language">Select Language</string>
 
-    <string name="back">Πίσω</string>
+    <string name="back">Back</string>
 
     <string name="lorem_ipsum" translatable="false">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam in scelerisque sem. Mauris

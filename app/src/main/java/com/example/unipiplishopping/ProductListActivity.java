@@ -75,7 +75,7 @@ public class ProductListActivity extends BaseActivity {
         fabOption1.setOnClickListener(v -> {
             Intent intent = new Intent(ProductListActivity.this, EditProfile.class);
             startActivity(intent);
-    });
+        });
 
         // Λειτουργία για το δεύτερο επιπλέον κουμπί
         fabOption2.setOnClickListener(v -> {

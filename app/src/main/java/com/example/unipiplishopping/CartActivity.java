@@ -57,9 +57,9 @@ public class CartActivity extends BaseActivity {
 
         // Λειτουργία για το πρώτο επιπλέον κουμπί
         fabOption1.setOnClickListener(v -> {
-            Toast.makeText(this, "Option 1 Clicked", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(CartActivity.this, EditProfile.class);
+            startActivity(intent);
         });
-
         // Λειτουργία για το δεύτερο επιπλέον κουμπί
         fabOption2.setOnClickListener(v -> {
             Intent intent = new Intent(CartActivity.this, SettingsActivity.class);

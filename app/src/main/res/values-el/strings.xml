@@ -104,7 +104,9 @@
 
     <string name="create_account">Δημιουργία Λογαριασμού</string>
 
-    <string name="select_language">Selección de idioma</string>
+    <string name="select_language">Επιλογή Γλώσσας</string>
+
+    <string name="back">Πίσω</string>
 
     <string name="lorem_ipsum">
     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam in scelerisque sem. Mauris
