@@ -123,6 +123,9 @@ public class ProductListActivity extends BaseActivity {
         productList.add(new Product("6", getString(R.string.manos_chatzidakis_megalos_erotikos), getString(R.string.folk_classical_entekhno), getString(R.string.date_march_1972), 45.00, 1, getString(R.string.joe_records)));
         productList.add(new Product("7", getString(R.string.tania_tsanaklidou_mama_gernao), getString(R.string.folk_classical_entekhno), getString(R.string.date_october_1981), 15.00, 1, getString(R.string.joe_records)));
         productList.add(new Product("8", getString(R.string.queen_a_night_at_the_opera), getString(R.string.rock), getString(R.string.date_21_november_1975), 38.00, 1, getString(R.string.vinyl_city)));
+        productList.add(new Product("9", getString(R.string.ravel), getString(R.string.classical), getString(R.string.date_29_november_2005), 50.00, 1, getString(R.string.underground_tales_records)));
+        productList.add(new Product("10", getString(R.string.gnx), getString(R.string.hip), getString(R.string.date_22_november_2024), 39.00, 1, getString(R.string.joe_records)));
+        productList.add(new Product("11", getString(R.string.pink), getString(R.string.prog), getString(R.string.date_30_november_1979), 24.76, 1, getString(R.string.diskorama)));
 
         SharedPreferences sharedPreferences = getSharedPreferences("ProductData", MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
@@ -143,6 +146,9 @@ public class ProductListActivity extends BaseActivity {
         imageEditor.putInt("6", R.drawable.megalos);
         imageEditor.putInt("7", R.drawable.mama);
         imageEditor.putInt("8", R.drawable.queen);
+        imageEditor.putInt("9", R.drawable.ravel);
+        imageEditor.putInt("10", R.drawable.gnx);
+        imageEditor.putInt("11", R.drawable.pink);
         imageEditor.apply();
     }
 

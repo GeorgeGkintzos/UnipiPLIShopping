@@ -26,56 +26,78 @@
         android:id="@+id/logoImage"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:src="@drawable/vinyl_logo"
+        android:src="@drawable/vinyl"
         android:contentDescription="@string/app_name"
         app:layout_constraintTop_toBottomOf="@id/textTitle"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginBottom="20dp" />
 
+    <!-- Τίτλος Ονόματος -->
+    <TextView
+        android:id="@+id/textFirstNameTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/first_name"
+        android:textSize="16sp"
+        android:textColor="#FFFFFF"
+        app:layout_constraintTop_toBottomOf="@+id/logoImage"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginBottom="4dp"/>
+
     <!-- Επεξεργασία Ονόματος -->
     <EditText
         android:id="@+id/editFirstName"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:autofillHints=""
         android:hint="@string/first_name"
         android:backgroundTint="#556B2F"
-        android:textColor="#FFFFFF"
+        android:inputType=""
+        android:textColor="#808080"
         android:textColorHint="#D3D3D3"
         android:padding="10dp"
         android:minHeight="48dp"
-        app:layout_constraintTop_toBottomOf="@+id/logoImage"
+        app:layout_constraintTop_toBottomOf="@id/textFirstNameTitle"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintWidth_percent="0.8" />
+        app:layout_constraintWidth_percent="0.8"
+        android:clickable="false"
+        android:enabled="false"/>
+
+    <!-- Τίτλος Επωνύμου -->
+    <TextView
+        android:id="@+id/textLastNameTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/last_name"
+        android:textSize="16sp"
+        android:textColor="#FFFFFF"
+        app:layout_constraintTop_toBottomOf="@+id/editFirstName"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="4dp"/>
 
     <!-- Επεξεργασία Επωνύμου -->
     <EditText
         android:id="@+id/editLastName"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:autofillHints=""
         android:hint="@string/last_name"
         android:backgroundTint="#556B2F"
-        android:textColor="#FFFFFF"
+        android:inputType=""
+        android:textColor="#808080"
         android:textColorHint="#D3D3D3"
         android:padding="10dp"
         android:minHeight="48dp"
-        app:layout_constraintTop_toBottomOf="@+id/editFirstName"
+        app:layout_constraintTop_toBottomOf="@id/textLastNameTitle"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintWidth_percent="0.8" />
+        app:layout_constraintWidth_percent="0.8"
+        android:clickable="false"
+        android:enabled="false"/>
 
-    <!-- Κουμπί Αποθήκευσης -->
-    <Button
-        android:id="@+id/buttonSave"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="@string/save"
-        android:backgroundTint="#556B2F"
-        android:textColor="#FFFFFF"
-        android:paddingVertical="12dp"
-        app:layout_constraintTop_toBottomOf="@+id/editLastName"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintWidth_percent="0.8" />
 </androidx.constraintlayout.widget.ConstraintLayout>

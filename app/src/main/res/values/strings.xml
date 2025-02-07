@@ -43,12 +43,19 @@
     <string name="manos_chatzidakis_megalos_erotikos">Μάνος Χατζιδάκις\nΟ Μεγάλος Ερωτικός</string>
     <string name="tania_tsanaklidou_mama_gernao">Τάνια Τσανακλίδου\nΜαμά Γερνάω</string>
     <string name="queen_a_night_at_the_opera">Queen\nA Night at the Opera</string>
+    <string name="ravel">Maurice Ravel\nRavel: Miroirs, Jeux D\'Eau, Pavane Pour Une Infante Défunte</string>
+    <string name="gnx">Kendrick Lamar GNX</string>
+    <string name="pink">Pink Floyd The Wall</string>
 
     <string name="dark_pop">Dark Pop</string>
     <string name="rock">Rock</string>
     <string name="alternative_indie">Alternative Indie</string>
     <string name="hip_hop_rap">Hip-Hop, Rap</string>
     <string name="folk_classical_entekhno">Folk, Classical, Entekhno</string>
+    <string name="classical">Classical</string>
+    <string name="hip">Hip Hop, Funk / Soul</string>
+    <string name="prog">Rock, Progressive rock</string>
+
     <string name="date_7_march_2025">7 March 2025</string>
     <string name="date_26_september_1969">26 September 1969</string>
     <string name="date_8_may_1970">8 May 1970</string>
@@ -57,6 +64,9 @@
     <string name="date_march_1972">March 1972</string>
     <string name="date_october_1981">October 1981</string>
     <string name="date_21_november_1975">21 November 1975</string>
+    <string name="date_29_november_2005">29 November 2005</string>
+    <string name="date_22_november_2024">22 November 2024</string>
+    <string name="date_30_november_1979">30 November 1979</string>
 
     <string name="velona_records">Velona Records</string>
     <string name="diskorama">DISKORAMA</string>
@@ -99,7 +109,7 @@
 
     <string name="location_permission_required">Location permission is required!</string>
 
-    <string name="edit_your_profile">Edit Your Profile</string>
+    <string name="edit_your_profile">Your Profile</string>
     <string name="login_title">Login</string>
 
     <string name="create_account">Create Account</string>

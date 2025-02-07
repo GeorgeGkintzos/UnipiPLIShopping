@@ -42,7 +42,6 @@ public class SignupActivity extends BaseActivity {
         // Διαχείριση πατήματος του κουμπιού "Register"
         btnRegister.setOnClickListener(v -> {
             registerUser();
-            backToHome(v);
         });
 
         // Διαχείριση πατήματος του ImageView "backImage"
@@ -81,13 +80,13 @@ public class SignupActivity extends BaseActivity {
         checkUsernameAvailability(username, isUnavailable -> {
             if (isUnavailable) {
                 Toast.makeText(this, getString(R.string.username_exists), Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(SignupActivity.this, SignupActivity.class);
+                startActivity(intent);
             } else {
                 // Επιτυχής εγγραφή
                 addUser(username, firstName, lastName, email, password);
             }
         });
-
-
     }
 
     private void addUser(String username, String firstName, String lastName, String email, String password) {
